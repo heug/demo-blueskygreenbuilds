@@ -4,9 +4,9 @@ import requests
 import re
 from subprocess import call
 
-starting_hash='df0130d4b7b27fb48cc78641f801f529a1c1abb6'
+starting_hash='be909217b1d288d6cf74be8faced91028fcdae15'
 
-github_user='eddiewebb'
+github_user='heug'
 github_token=os.environ['CCI_DEMO_GITHUB_API_TOKEN']
 github_repo='demo-blueskygreenbuilds'
 auth=(github_user,github_token)
