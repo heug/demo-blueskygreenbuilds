@@ -55,17 +55,17 @@ workflows:
             branches:
               only: master
           context: Demos-Context
-          appname: blueskygreenbuilds
-          org: eddies-org
-          space: circleci
+          appname: greenblue
+          org: heug
+          space: development
           workspace_path: /tmp
           manifest: /tmp/cf-manifest.yml
           package: /tmp/standalone-app.jar
-          domain: blueskygreenbuilds.com
+          domain: greenbluego.com
           validate_steps:
             - slack/notify:
                 message: "The latest inventory is ready to ship, please review/approve ASAP! https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}"
-                mentions: UA8FDUL8P
+                mentions: D5Q5E48FM
 
       - hold:
           type: approval
@@ -84,10 +84,10 @@ workflows:
             branches:
               only: master
           context: Demos-Context
-          appname: blueskygreenbuilds
-          org: eddies-org
-          space: circleci
-          domain: blueskygreenbuilds.com
+          appname: greenblue
+          org: heug
+          space: development
+          domain: greenbluego.com
 
 
 
