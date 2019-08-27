@@ -19,7 +19,7 @@ test_case='src/test/java/com/edwardawebb/circleci/demo/BuildInfoControllerTests.
 
 
 def main():
-    # revertToKnownCleanState()
+    revertToKnownCleanState()
     issue=newDemoIssueId()
     branch=newDemoBranch(issue)
     uncommentTestFailure()
