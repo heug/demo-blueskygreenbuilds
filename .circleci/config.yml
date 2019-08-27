@@ -34,8 +34,9 @@ workflows:
       - maven/test:
           name: "Static Analysis"
           command: 'clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar 
-                     -Dsonar.host.url=https://sonarcloud.io 
-                     -Dsonar.organization=circleci-demo 
+                     -Dsonar.host.url=https://sonarcloud.io
+                     -Dsonar.projectKey=heug_demo-blueskygreenbuilds
+                     -Dsonar.organization=heug 
                      -Dsonar.login=${SONAR_KEY} 
                      -Dsonar.branch.name=${CIRCLE_BRANCH}'
           requires:
@@ -47,46 +48,46 @@ workflows:
             branches:
               only: master
 
-      - cloudfoundry/dark_deploy:
-          requires:
-            - package-jar
-          filters:
-            branches:
-              only: master
-          context: Demos-Context
-          appname: blueskygreenbuilds
-          org: eddies-org
-          space: circleci
-          workspace_path: /tmp
-          manifest: /tmp/cf-manifest.yml
-          package: /tmp/standalone-app.jar
-          domain: blueskygreenbuilds.com
-          validate_steps:
-            - slack/notify:
-                message: "The latest inventory is ready to ship, please review/approve ASAP! https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}"
-                mentions: UA8FDUL8P
+      # - cloudfoundry/dark_deploy:
+      #     requires:
+      #       - package-jar
+      #     filters:
+      #       branches:
+      #         only: master
+      #     context: Demos-Context
+      #     appname: blueskygreenbuilds
+      #     org: eddies-org
+      #     space: circleci
+      #     workspace_path: /tmp
+      #     manifest: /tmp/cf-manifest.yml
+      #     package: /tmp/standalone-app.jar
+      #     domain: blueskygreenbuilds.com
+      #     validate_steps:
+      #       - slack/notify:
+      #           message: "The latest inventory is ready to ship, please review/approve ASAP! https://circleci.com/workflow-run/${CIRCLE_WORKFLOW_ID}"
+      #           mentions: UA8FDUL8P
 
       - hold:
           type: approval
           requires:
-            - cloudfoundry/dark_deploy
+            # - cloudfoundry/dark_deploy
             - "IE Tests"
             - "Chrome Tests"
           filters:
             branches:
               only: master
               
-      - cloudfoundry/live_deploy:
-          requires:
-            - hold
-          filters:
-            branches:
-              only: master
-          context: Demos-Context
-          appname: blueskygreenbuilds
-          org: eddies-org
-          space: circleci
-          domain: blueskygreenbuilds.com
+      # - cloudfoundry/live_deploy:
+      #     requires:
+      #       - hold
+      #     filters:
+      #       branches:
+      #         only: master
+      #     context: Demos-Context
+      #     appname: blueskygreenbuilds
+      #     org: eddies-org
+      #     space: circleci
+      #     domain: blueskygreenbuilds.com
 
 
 
