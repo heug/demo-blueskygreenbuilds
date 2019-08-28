@@ -19,19 +19,19 @@ test_case='src/test/java/com/edwardawebb/circleci/demo/BuildInfoControllerTests.
 
 
 def main():
-    revertToKnownCleanState()
-    issue=newDemoIssueId()
-    branch=newDemoBranch(issue)
-    uncommentTestFailure()
-    commitLocalChangeAgainstIssue(branch,issue,"Breaks issue #" + str(issue['number']) + " with failing test.")
-    pr=openPullRequestAgainstBranch(branch,issue)
-    print("PR: " + pr['html_url'] + " created")
-    input("Press Enter to commit fix...")
-    commentTestFailure()
-    commitLocalChangeAgainstIssue(branch,issue,"Fixes issue #" + str(issue['number']) + ", tests passing.")
-    print("PR: " + pr['html_url'] + " will be closed if still open")
-    input("Press enter to checkout latest from master (reset)")
-    mergePullRequestIfOpen(pr)
+    # revertToKnownCleanState()
+    # issue=newDemoIssueId()
+    # branch=newDemoBranch(issue)
+    # uncommentTestFailure()
+    # commitLocalChangeAgainstIssue(branch,issue,"Breaks issue #" + str(issue['number']) + " with failing test.")
+    # pr=openPullRequestAgainstBranch(branch,issue)
+    # print("PR: " + pr['html_url'] + " created")
+    # input("Press Enter to commit fix...")
+    # commentTestFailure()
+    # commitLocalChangeAgainstIssue(branch,issue,"Fixes issue #" + str(issue['number']) + ", tests passing.")
+    # print("PR: " + pr['html_url'] + " will be closed if still open")
+    # input("Press enter to checkout latest from master (reset)")
+    # mergePullRequestIfOpen(pr)
     revertToKnownCleanState()
 
 
