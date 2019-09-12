@@ -4,7 +4,7 @@ Build, Test and Deploy a modern webapp using CircleCI.
 
 Technologies covered:
 - Build a Spring Boot app with Maven (and caching maven repos!)
-- Browser testing with Selenium and Saucelabs
+- Browser testing with Selenium and [Sauce Labs](https://saucelabs.com)
 - Static Code Analysis with SonarQube
 - Manual Approval/Promotion
 - Blue/Green (zero downtime) Deployments with Cloud Foundry.
