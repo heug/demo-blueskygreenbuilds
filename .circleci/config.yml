@@ -86,7 +86,7 @@ workflows:
             branches:
               only: master
           context: Demos-Context
-          appname: greenblue-dark
+          appname: greenblue
           org: heug
           space: development
           domain: greenbluego.com
