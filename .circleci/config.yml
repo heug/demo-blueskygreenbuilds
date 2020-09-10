@@ -22,7 +22,7 @@ workflows:
             - maven/with_cache:
                 steps:
                   - run: echo "hello"
-                  # - run: ./mvnw verify -B -Dspring.profiles.active=it -Dsauce.tunnel="chrome" 
+                  - run: ./mvnw verify -B -Dspring.profiles.active=it -Dsauce.tunnel="chrome" 
       - saucelabs/with_proxy:
           name: "IE Tests"
           requires:
@@ -32,7 +32,7 @@ workflows:
             - maven/with_cache:
                 steps:
                   - run: echo "hello"
-                  # - run: ./mvnw verify -B -Dspring.profiles.active=it -Dsauce.version=11.103 -Dsauce.tunnel="ie" -Dsauce.browser="internet explorer"    
+                  - run: ./mvnw verify -B -Dspring.profiles.active=it -Dsauce.version=11.103 -Dsauce.tunnel="ie" -Dsauce.browser="internet explorer"    
       - maven/test:
           name: "Static Analysis"
           command: 'clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar 
